@@ -5,6 +5,7 @@ session_start();
 	include("functions.php");
 
 
+
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
@@ -16,7 +17,7 @@ session_start();
 		$caution_deposit = $_POST['caution_deposit'];
 		$total_fees = (int)$mess_fee + (int)$tv_fund + (int)$machine_fee + (int)$est_charges + (int)$caution_deposit;
 
-		if($sr_no != 0)   
+		if($sr_no != 0)
 		{
 
 			$query = "insert into hostel_details (sr_no,mess_fee,tv_fund,machine_fee,est_charges,caution_deposit,total_fee) values ('$sr_no','$mess_fee','$tv_fund','$machine_fee','$est_charges','$caution_deposit','$total_fees')";
