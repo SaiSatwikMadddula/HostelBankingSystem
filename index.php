@@ -21,5 +21,9 @@ session_start();
 	<br>
 	Hello, <?php echo $user_data['user_name']; ?>
 	<a href="hostel_details.php">Enter Hostel Details</a><br><br>
+	<a href="student.php">Enter student Details</a><br><br>
+	<a href="account_details.php">Enter account Details</a><br><br>
+	<a href="payment.php">Enter payment Details</a><br><br>
+	<a href="transaction.php">Enter transaction Details</a><br><br>
 </body>
 </html>

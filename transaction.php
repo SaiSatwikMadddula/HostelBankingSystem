@@ -9,18 +9,17 @@ session_start();
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
-		$sr_no = $_POST['sr_no'];
-		$mess_fee = $_POST['mess_fee'];
-		$tv_fund = $_POST['tv_fund'];
-		$machine_fee = $_POST['machine_fee'];
-		$est_charges = $_POST['est_charges'];
-		$caution_deposit = $_POST['caution_deposit'];
-		$total_fees = (int)$mess_fee + (int)$tv_fund + (int)$machine_fee + (int)$est_charges + (int)$caution_deposit;
+		$transaction_id = $_POST['transaction_id'];
+		$payee = $_POST['payee'];
+		$transaction_status = $_POST['transaction_status'];
+		$transaction_amount = $_POST['transaction_amount'];
+    $payment_id - $_POST['payment_id'];
+		$usn = $_POST['usn'];
 
-		if($sr_no != 0)
+		if($account_number != 0)
 		{
 
-			$query = "insert into hostel_details (sr_no,mess_fee,tv_fund,machine_fee,est_charges,caution_deposit,total_fee) values ('$sr_no','$mess_fee','$tv_fund','$machine_fee','$est_charges','$caution_deposit','$total_fees')";
+			$query = "insert into acoount_details (transaction_id,payee,transaction_status,transaction_amount,payment_id,usn) values ('$transaction_id','$payee','$transaction_status','$transaction_amount','payment_id','$usn')";
 
 			mysqli_query($con, $query);
 
@@ -696,64 +695,62 @@ input {
 
 
 	</style>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+      <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Hostel Fee Details</h2>
+                    <h2 class="title">Transaction Details</h2>
                     <form method="POST">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Sr Number</label>
-                                    <input class="input--style-4" type="Number" name="sr_no">
+                                    <label class="label">Transcation Id</label>
+                                    <input class="input--style-4" type="text" name="transaction_id">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Mess Fee</label>
-                                    <input class="input--style-4" type="Number" name="mess_fee">
+                                    <label class="label">Payee</label>
+                                    <input class="input--style-4" type="text" name="payee">
                                 </div>
                             </div>
                         </div>
-						<div class="row row-space">
+            <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">TV fund</label>
-                                    <input class="input--style-4" type="Number" name="tv_fund">
+                                    <label class="label">Transaction Status</label>
+                                    <input class="input--style-4" type="text" name="transaction_status">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Machine Fee</label>
-                                    <input class="input--style-4" type="Number" name="machine_fee">
-                                </div>
-                            </div>
-                        </div>
-						<div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Est charges</label>
-                                    <input class="input--style-4" type="Number" name="est_charges">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Caution Deposit</label>
-                                    <input class="input--style-4" type="Number" name="caution_deposit">
+                                    <label class="label">Transaction Amount</label>
+                                    <input class="input--style-4" type="text" name="transaction_amount">
                                 </div>
                             </div>
                         </div>
+            <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Payment Id</label>
+                                    <input class="input--style-4" type="text" name="payment_id">
+                                </div>
+                            </div>
+              <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">usn</label>
+                                    <input class="input--style-4" type="text" name="usn">
+                                </div>
+                            </div>
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Next</button>
+            <br/>
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-
 </body>
 
 </html>

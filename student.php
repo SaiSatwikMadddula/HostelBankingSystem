@@ -9,18 +9,22 @@ session_start();
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
-		$sr_no = $_POST['sr_no'];
-		$mess_fee = $_POST['mess_fee'];
-		$tv_fund = $_POST['tv_fund'];
-		$machine_fee = $_POST['machine_fee'];
-		$est_charges = $_POST['est_charges'];
-		$caution_deposit = $_POST['caution_deposit'];
-		$total_fees = (int)$mess_fee + (int)$tv_fund + (int)$machine_fee + (int)$est_charges + (int)$caution_deposit;
+		$usn = $_POST['usn'];
+		$name = $_POST['name'];
+		$branch = $_POST['branch'];
+		$sem = $_POST['sem'];
+		$address = $_POST['address'];
+		$email_id = $_POST['email_id'];
+    $block_number = $_POST['block_number'];
+    $room_number = $_POST['room_number'];
+    $phone_number = $_POST['phone_number'];
+    $sr_no = $_POST['sr_no'];
+    
 
-		if($sr_no != 0)
+		if($usn != 0)
 		{
 
-			$query = "insert into hostel_details (sr_no,mess_fee,tv_fund,machine_fee,est_charges,caution_deposit,total_fee) values ('$sr_no','$mess_fee','$tv_fund','$machine_fee','$est_charges','$caution_deposit','$total_fees')";
+			$query = "insert into student (usn,name,branch,sem,address,email_id,block_number,room_number, phone_number,sr_no) values ('$usn','$name','$branch','$sem','$address','$email_id','$block_number','$room_number','$phone_number','$sr_no')";
 
 			mysqli_query($con, $query);
 
@@ -696,54 +700,81 @@ input {
 
 
 	</style>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+  <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Hostel Fee Details</h2>
+                    <h2 class="title">Student Details</h2>
                     <form method="POST">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
+                                    <label class="label">USN</label>
+                                    <input class="input--style-4" type="text" name="usn">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Name</label>
+                                    <input class="input--style-4" type="text" name="name">
+                                </div>
+                            </div>
+                        </div>
+            <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Branch</label>
+                                    <input class="input--style-4" type="text" name="branch">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Sem</label>
+                                    <input class="input--style-4" type="text" name="sem">
+                                </div>
+                            </div>
+                        </div>
+            <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Address</label>
+                                    <input class="input--style-4" type="text" name="address">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">email_id</label>
+                                    <input class="input--style-4" type="text" name="email_id">
+                                </div>
+                            </div>
+                        </div>
+            <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Block Number</label>
+                                    <input class="input--style-4" type="text" name="block_number">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Room Number</label>
+                                    <input class="input--style-4" type="text" name="room_number">
+                                </div>
+                            </div>
+                        </div>
+            <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Phone Number</label>
+                                    <input class="input--style-4" type="text" name="phone_number">
+                                </div>
+                            </div>  
+                            <div class="col-2">
+                                <div class="input-group">
                                     <label class="label">Sr Number</label>
-                                    <input class="input--style-4" type="Number" name="sr_no">
+                                    <input class="input--style-4" type="text" name="sr_no">
                                 </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Mess Fee</label>
-                                    <input class="input--style-4" type="Number" name="mess_fee">
-                                </div>
-                            </div>
-                        </div>
-						<div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">TV fund</label>
-                                    <input class="input--style-4" type="Number" name="tv_fund">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Machine Fee</label>
-                                    <input class="input--style-4" type="Number" name="machine_fee">
-                                </div>
-                            </div>
-                        </div>
-						<div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Est charges</label>
-                                    <input class="input--style-4" type="Number" name="est_charges">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Caution Deposit</label>
-                                    <input class="input--style-4" type="Number" name="caution_deposit">
-                                </div>
-                            </div>
-                        </div>
+                            </div>              
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Next</button>
                         </div>
@@ -752,7 +783,6 @@ input {
             </div>
         </div>
     </div>
-
 
 </body>
 

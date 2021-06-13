@@ -9,18 +9,15 @@ session_start();
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
-		$sr_no = $_POST['sr_no'];
-		$mess_fee = $_POST['mess_fee'];
-		$tv_fund = $_POST['tv_fund'];
-		$machine_fee = $_POST['machine_fee'];
-		$est_charges = $_POST['est_charges'];
-		$caution_deposit = $_POST['caution_deposit'];
-		$total_fees = (int)$mess_fee + (int)$tv_fund + (int)$machine_fee + (int)$est_charges + (int)$caution_deposit;
+		$payment_id = $_POST['payment_id'];
+		$payment_date = $_POST['payment_date'];
+		$payment_method = $_POST['payment_method'];
+		$account_number = $_POST['account_number'];
 
-		if($sr_no != 0)
+		if($account_number != 0)
 		{
 
-			$query = "insert into hostel_details (sr_no,mess_fee,tv_fund,machine_fee,est_charges,caution_deposit,total_fee) values ('$sr_no','$mess_fee','$tv_fund','$machine_fee','$est_charges','$caution_deposit','$total_fees')";
+			$query = "insert into acoount_details (payment_id,payment_date,payment_method,account_number) values ('$payment_id','$payment_date','$payment_method','$account_number')";
 
 			mysqli_query($con, $query);
 
@@ -696,51 +693,37 @@ input {
 
 
 	</style>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+  <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Hostel Fee Details</h2>
+                    <h2 class="title">Payemnt Details</h2>
                     <form method="POST">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Sr Number</label>
-                                    <input class="input--style-4" type="Number" name="sr_no">
+                                    <label class="label">Payement Id</label>
+                                    <input class="input--style-4" type="text" name="payment_id">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Mess Fee</label>
-                                    <input class="input--style-4" type="Number" name="mess_fee">
-                                </div>
-                            </div>
-                        </div>
-						<div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">TV fund</label>
-                                    <input class="input--style-4" type="Number" name="tv_fund">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Machine Fee</label>
-                                    <input class="input--style-4" type="Number" name="machine_fee">
+                                    <label class="label"> Payment Date</label>
+                                    <input class="input--style-4" type="date" name="payment_date">
                                 </div>
                             </div>
                         </div>
-						<div class="row row-space">
+            <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Est charges</label>
-                                    <input class="input--style-4" type="Number" name="est_charges">
+                                    <label class="label">Payment Method</label>
+                                    <input class="input--style-4" type="text" name="payment_method">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Caution Deposit</label>
-                                    <input class="input--style-4" type="Number" name="caution_deposit">
+                                    <label class="label">Account Number</label>
+                                    <input class="input--style-4" type="text" name="account_number">
                                 </div>
                             </div>
                         </div>
@@ -752,8 +735,6 @@ input {
             </div>
         </div>
     </div>
-
-
 </body>
 
 </html>
