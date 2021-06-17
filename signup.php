@@ -8,15 +8,15 @@ session_start();
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
-		$user_name = $_POST['user_name'];
+		$sr_no = $_POST['sr_no'];
 		$password = $_POST['password'];
 
-		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
+		if(!empty($sr_no) && !empty($password))
 		{
 
 			//save to database
 			$user_id = random_num(20);
-			$query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
+			$query = "insert into users (user_id,sr_no,password) values ('$user_id','$sr_no','$password')";
 
 			mysqli_query($con, $query);
 
@@ -233,7 +233,7 @@ body {
 			<form class="login" method="post">
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder="User name" name="user_name">
+					<input type="Number" class="login__input" placeholder="Sr Number" name="sr_no">
 				</div>
 				<div class="login__field">
 					<i class="login__icon fas fa-lock"></i>

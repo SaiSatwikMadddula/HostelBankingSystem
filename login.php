@@ -9,14 +9,14 @@ session_start();
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
-		$user_name = $_POST['user_name'];
+		$sr_no = $_POST['sr_no'];
 		$password = $_POST['password'];
 
-		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
+		if(!empty($sr_no) && !empty($password))
 		{
 
 			//read from database
-			$query = "select * from users where user_name = '$user_name' limit 1";
+			$query = "select * from users where sr_no = '$sr_no' limit 1";
 			$result = mysqli_query($con, $query);
 
 			if($result)
@@ -29,14 +29,17 @@ session_start();
 					if($user_data['password'] === $password)
 					{
 
-						$_SESSION['user_id'] = $user_data['user_id'];
-						header("Location: index.php");
-						die;
+						$_SESSION['sr_no'] = $user_data['sr_no'];
+
+						
+							header("Location: hostel_details.php");
+							die;
+
+						
 					}
 				}
-			}
-			
-			echo "wrong username or password!";
+			}	
+			echo "wrong username or password!";		
 		}else
 		{
 			echo "wrong username or password!";
@@ -246,7 +249,7 @@ body {
 			<form class="login" method="post">
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder="User name" name="user_name">
+					<input type="Number" class="login__input" placeholder="Sr Number" name="sr_no">
 				</div>
 				<div class="login__field">
 					<i class="login__icon fas fa-lock"></i>

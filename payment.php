@@ -17,11 +17,11 @@ session_start();
 		if($account_number != 0)
 		{
 
-			$query = "insert into acoount_details (payment_id,payment_date,payment_method,account_number) values ('$payment_id','$payment_date','$payment_method','$account_number')";
+			$query = "insert into payment (payment_id,payment_date,payment_method,account_number) values ('$payment_id','$payment_date','$payment_method','$account_number')";
 
 			mysqli_query($con, $query);
 
-			header("Location: index.php");
+			header("Location: transaction.php");
 			die;
 		}else
 		{

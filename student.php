@@ -28,7 +28,7 @@ session_start();
 
 			mysqli_query($con, $query);
 
-			header("Location: index.php");
+			header("Location: account_details.php");
 			die;
 		}else
 		{

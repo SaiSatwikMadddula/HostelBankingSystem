@@ -18,11 +18,11 @@ session_start();
 		if($account_number != 0)
 		{
 
-			$query = "insert into acoount_details (account_number,ifsc_code,branch_name,micr_code,usn) values ('$account_number','$ifsc_code','$branch_name','$micr_code','$usn')";
+			$query = "insert into account_details (account_number,ifsc_code,branch_name,micr_code,usn) values ('$account_number','$ifsc_code','$branch_name','$micr_code','$usn')";
 
 			mysqli_query($con, $query);
 
-			header("Location: index.php");
+			header("Location: payment.php");
 			die;
 		}else
 		{

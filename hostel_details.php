@@ -4,7 +4,14 @@ session_start();
 	include("connection.php");
 	include("functions.php");
 
+  $sr_store = $_SESSION['sr_no'];
+  $query_get = "select * from hostel_details where sr_no = '$sr_store' limit 1";
+  $result_get = mysqli_query($con, $query_get);
+  if($result_get && mysqli_num_rows($result_get) > 0){
+    header("Location: index_initial.php");
+     die;
 
+  }
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -16,15 +23,16 @@ session_start();
 		$est_charges = $_POST['est_charges'];
 		$caution_deposit = $_POST['caution_deposit'];
 		$total_fees = (int)$mess_fee + (int)$tv_fund + (int)$machine_fee + (int)$est_charges + (int)$caution_deposit;
-
-		if($sr_no != 0)
+    
+		if($sr_no != 0 && $sr_no === $_SESSION['sr_no'])
 		{
+
 
 			$query = "insert into hostel_details (sr_no,mess_fee,tv_fund,machine_fee,est_charges,caution_deposit,total_fee) values ('$sr_no','$mess_fee','$tv_fund','$machine_fee','$est_charges','$caution_deposit','$total_fees')";
 
 			mysqli_query($con, $query);
 
-			header("Location: index.php");
+			header("Location: student.php");
 			die;
 		}else
 		{

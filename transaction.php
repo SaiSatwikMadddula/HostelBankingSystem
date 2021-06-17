@@ -13,17 +13,17 @@ session_start();
 		$payee = $_POST['payee'];
 		$transaction_status = $_POST['transaction_status'];
 		$transaction_amount = $_POST['transaction_amount'];
-    $payment_id - $_POST['payment_id'];
-		$usn = $_POST['usn'];
+    $payment_id = $_POST['payment_id'];
+		$sr_no = $_POST['sr_no']; 
 
-		if($account_number != 0)
+		if($transaction_id != 0)
 		{
 
-			$query = "insert into acoount_details (transaction_id,payee,transaction_status,transaction_amount,payment_id,usn) values ('$transaction_id','$payee','$transaction_status','$transaction_amount','payment_id','$usn')";
+			$query = "insert into transaction (transaction_id,payee,transaction_status,transaction_amount,payment_id,sr_no) values ('$transaction_id','$payee','$transaction_status','$transaction_amount','$payment_id','$sr_no')";
 
 			mysqli_query($con, $query);
 
-			header("Location: index.php");
+			header("Location: index_initial.php");
 			die;
 		}else
 		{
@@ -738,8 +738,8 @@ input {
                             </div>
               <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">usn</label>
-                                    <input class="input--style-4" type="text" name="usn">
+                                    <label class="label">Sr Number</label>
+                                    <input class="input--style-4" type="text" name="sr_no">
                                 </div>
                             </div>
                         <div class="p-t-15">
