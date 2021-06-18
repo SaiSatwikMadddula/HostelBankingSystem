@@ -8,10 +8,18 @@ session_start();
   $query_get = "select * from hostel_details where sr_no = '$sr_store' limit 1";
   $result_get = mysqli_query($con, $query_get);
   if($result_get && mysqli_num_rows($result_get) > 0){
-    header("Location: index_initial.php");
-     die;
+    $hostel_get = mysqli_fetch_assoc($result_get);
+    $hostel_get_date = $hostel_get["created_date"];
 
-  }
+    $new_date =  date('Y-m-d', strtotime($hostel_get_date. ' + 180 days'));
+
+    $present_date = date('y-m-d'); 
+    
+    if($present_date > $new_date ){
+      header("Location: index_initial.php");
+      die;
+    } 
+  } 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{

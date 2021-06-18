@@ -3,8 +3,8 @@ session_start();
 
 	include("connection.php");
 	include("functions.php");
-	echo "<h1>This is the index page</h1>";
-	echo "<br>";
+	echo "<h1>Hello User</h1>";
+	echo "<h2>Transaction Details</h2>";
 
 	$user_data = check_login($con);
 	$sr_store = $_SESSION['sr_no'];
@@ -41,7 +41,7 @@ echo "</table>";
 		}
 	</style>
 
-	hello, <?php echo $_SESSION['sr_no']; ?>;
+	<!-- hello, <?php echo $_SESSION['sr_no']; ?>; -->
 	<br><br>
 	<a href="logout.php">Logout</a>
 
