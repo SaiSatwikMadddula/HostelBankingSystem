@@ -38,6 +38,7 @@ session_start();
 						
 					}
 				}
+				echo "wrong username or password!";
 			}	
 			echo "wrong username or password!";		
 		}else
