@@ -3,10 +3,10 @@ session_start();
 
 	include("connection.php");
 	include("functions.php");
-	echo "<h1>Hello User</h1>";
-	echo "<h2>Transaction Details</h2>";
-
-
+	echo "<h1 style= color:#66ff66;>HOSTEL STUDENTS BANKING SYSTEM</h1>";
+	echo "<h2 style= color:#ff5349;>Hello, User</h2>";
+	echo '<span style="color:#6f6;text-align:center;">Transaction Details : </span>';
+	echo "<br>";
 	$user_data = check_login($con);
 	$sr_store = $_SESSION['sr_no'];
     $query_get = "select * from transaction where sr_no = '$sr_store' limit 1";
@@ -15,7 +15,7 @@ session_start();
 	echo "<table border='1'>";
 	while ($row = mysqli_fetch_assoc($result_get)) { 
     foreach ($row as $field => $value) { 
-        echo "<td>" . $value . "</td>"; 
+        echo "<td >" . $value . "</td>"; 
     }
     echo "</tr>";
 }
@@ -39,11 +39,11 @@ echo "</table>";
 	}
 </style>
 
-<body class = "hero" background="bg_img2.jpeg">
-
-	<!-- hello, <?php echo $_SESSION['sr_no']; ?>; -->
+<body class = "hero" background="bg_img.jpeg">
 	<br><br>
-	<a href="logout.php">Logout</a>
+	<span style= color:#aaf8ff;text-align:center;>Thank you, <?php echo $_SESSION['sr_no']; ?></span>;
+	<br><br>
+	<a href="logout.php" <span style="color:#6699cc;text-align:right;"></span>Logout</a>
 
 </body>
 </html>
