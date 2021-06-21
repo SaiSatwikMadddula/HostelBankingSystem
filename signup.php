@@ -11,7 +11,10 @@ session_start();
 		$sr_no = $_POST['sr_no'];
 		$password = $_POST['password'];
 
-		if(!empty($sr_no) && !empty($password))
+		$query = "select * from users where sr_no = '$sr_no' limit 1";
+		$result = mysqli_query($con, $query);
+
+		if(!empty($sr_no) && !empty($password) && mysqli_num_rows($result) < 1)
 		{
 
 			//save to database
@@ -28,7 +31,6 @@ session_start();
 		}
 	}
 ?>
-
 
 <!DOCTYPE html>
 <html>
